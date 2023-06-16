@@ -1,8 +1,8 @@
 <?php
 
-/*
-* AUTOLOADER
-*/
+/**
+ * AUTOLOADER
+ */
 
 spl_autoload_register(function ($className) {
     // Convert the namespace separator to a directory separator
@@ -22,26 +22,28 @@ spl_autoload_register(function ($className) {
 use Controllers\ProductController as ProductController;
 use Database\DB as DB;
 
-// Error Handler
+/**
+ * ERROR HANDLER
+ */
 
-function handleException($exception)
-{
-    http_response_code(500);
-    echo json_encode([
-        "code" => $exception->getCode(),
-        "message" => $exception->getMessage(),
-        "file" => $exception->getFile(),
-        "line" => $exception->getLine()
-    ]);
-}
+set_exception_handler(
+    function ($exception) {
+        http_response_code(500);
+        echo json_encode([
+            "code" => $exception->getCode(),
+            "line" => $exception->getLine(),
+            "file" => $exception->getFile(),
+            "message" => $exception->getMessage(),
+        ]);
+    }
+);
 
-/*
-* THE FUNCTION
-*/
+/**
+ * THE FUNCTION
+ */
 
 // Extract request arguments from URI
 
-set_exception_handler("handleException");
 header("Content-Type: application/json; charset=UTF-8");
 
 $parts = explode("/", $_SERVER['REQUEST_URI']);
