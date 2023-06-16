@@ -6,6 +6,7 @@ class ProductController
 {
     public function processRequest($method, $id)
     {
+        echo $method;
 
         if ($id) {
             $this->processResourceRequest($method, $id);
