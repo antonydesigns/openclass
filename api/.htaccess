@@ -1,0 +1,12 @@
+Options +FollowSymLinks -MultiViews
+
+RewriteEngine On
+RewriteBase /api
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+
+RewriteRule (.*) routing.php [QSA,L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
