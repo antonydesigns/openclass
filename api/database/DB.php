@@ -8,7 +8,7 @@ class DB
 {
     private $host = 'localhost';
     private $user = 'root';
-    private $password = 's';
+    private $password = 'ss';
     private $db_name = 'open_class_db';
 
     public function connect()
